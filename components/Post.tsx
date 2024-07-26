@@ -24,7 +24,7 @@ const Post = ({ subredditName, post, commentAmt, voteAmt, currentVote }: PostPro
   const pRef = useRef<HTMLDivElement>(null)
     return (
         <div className='bg-white rounded-md shadow'>
-      <div className='flex justify-between px-6 py-4'>
+      <div className='flex justify-between px-2 sm:px-6 py-4'>
         {/* TODO */}
         <PostVoteClient  postId={post.id} initialVote={currentVote?.type} initialVotesAmt={voteAmt} />
 

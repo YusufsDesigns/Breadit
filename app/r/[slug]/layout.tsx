@@ -52,7 +52,7 @@ const Layout = async ({
     
 
     return (
-        <div className='h-full pt-12 mx-auto sm:container max-w-7xl'>
+        <div className='h-full sm:pt-12 mx-auto sm:container max-w-7xl'>
             <div>
 
                 <div className='grid grid-cols-1 py-6 md:grid-cols-3 gap-y-4 md:gap-x-4'>

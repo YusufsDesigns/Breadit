@@ -42,33 +42,37 @@ const page = async ({ params: { postId } }: pageProps) => {
 
     return (
         <div>
-          <div className="flex flex-col items-center justify-between h-full sm:flex-row sm:items-start">
-            <Suspense fallback={<PostVoteShell />}>
-              <PostVoteServer 
-                postId={post?.id ?? cachedPost.id} 
-                getData={async () => {
-                  return await db.post.findUnique({
-                    where: {
-                      id: postId,
-                    },
-                    include: {
-                      votes: true,
-                      author: true
-                    },
-                  })
-                }}
-              />
-            </Suspense>
+          <div className="flex justify-between h-full">
             <div className='flex-1 w-full p-4 bg-white rounded-sm sm:w-0'>
-              <p className='mt-1 text-xs text-gray-500 truncate max-h-40'>
-                Posted by u/{post?.author.name ?? ''}{' '}
-                {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
-              </p>
-              <h1 className='py-2 text-xl font-semibold leading-6 text-gray-900'>
-                {post?.title ?? cachedPost.title}
-              </h1>
+              <div className="flex">
+                <Suspense fallback={<PostVoteShell />}>
+                  <PostVoteServer 
+                    postId={post?.id ?? cachedPost.id} 
+                    getData={async () => {
+                      return await db.post.findUnique({
+                        where: {
+                          id: postId,
+                        },
+                        include: {
+                          votes: true,
+                          author: true
+                        },
+                      })
+                    }}
+                  />
+                </Suspense>
+                  <div className="flex-1">
+                    <p className='mt-1 text-xs text-gray-500 truncate max-h-40'>
+                      Posted by u/{post?.author.name ?? ''}{' '}
+                      {formatTimeToNow(new Date(post?.createdAt ?? cachedPost.createdAt))}
+                    </p>
+                    <h1 className='py-2 text-xl font-semibold leading-6 text-gray-900'>
+                      {post?.title ?? cachedPost.title}
+                    </h1>
 
-              <EditorOutput content={post?.content ?? cachedPost.content} />
+                    <EditorOutput content={post?.content ?? cachedPost.content} />
+                  </div>
+              </div>
               
               <Suspense
                 fallback={

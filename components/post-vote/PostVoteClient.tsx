@@ -78,7 +78,7 @@ const PostVoteClient = ({
     })
 
     return (
-        <div className='flex flex-col gap-4 pb-4 pr-6 sm:gap-0 sm:w-20 sm:pb-0'>
+        <div className='flex flex-col gap-4 pb-4 pr-2 sm:pr-6 sm:gap-0 sm:w-20 sm:pb-0'>
             <Button 
                 size='sm' 
                 variant='ghost' 

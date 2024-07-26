@@ -26,7 +26,7 @@ export default function RootLayout(props: {
 
             {props.authModal}
 
-            <div className='container h-full pt-12 mx-auto max-w-7xl'>
+            <div className='container px-4 h-full pt-12 mx-auto max-w-7xl'>
               {props.children}
             </div>
 
